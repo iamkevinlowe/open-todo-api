@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :users, only: [:create, :show]
+  resources :users, only: [:create, :show] do
+    resources :lists, only: [:show]
+  end
 
   resources :sessions, only: [:create]
 
@@ -10,7 +12,7 @@ Rails.application.routes.draw do
     end
 
     resources :lists, only: [] do
-      resources :items, only: [:create]
+      resources :items, only: [:create, :update]
     end
 
     resources :items, only: [:destroy]
