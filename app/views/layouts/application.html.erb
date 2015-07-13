@@ -12,6 +12,16 @@
     <ul class="nav nav-tabs">
       <li><%= link_to "Home", root_path %></li>
       <li></li>
+
+      <div class="user-info pull-right">
+        <% if current_user %>
+          Logged in as <%= current_user.username %>.
+          <%= link_to "Log out", log_out_path, class: 'btn btn-danger btn-sm' %>
+        <% else %>
+          <%= link_to "Log in", log_in_path, class: 'btn btn-primary btn-sm' %> or
+          <%= link_to "Sign up", new_user_path, class: 'btn btn-primary btn-sm' %>
+        <% end %>
+      </div>
     </ul>
 
     <% if flash[:notice] %>
