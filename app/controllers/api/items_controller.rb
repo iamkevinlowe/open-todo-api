@@ -4,6 +4,7 @@ class Api::ItemsController < ApiController
 
   def create
     item = Item.new(item_params)
+    item.list = List.find(params[:list_id])
     if item.save
       render json: item
     else
@@ -23,6 +24,6 @@ class Api::ItemsController < ApiController
   private
 
   def item_params
-    params.require(:item).permit(:description, :list_id)
+    params.require(:item).permit(:description)
   end
 end

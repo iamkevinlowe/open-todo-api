@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'bootstrap-sass'
 gem 'active_model_serializers', '0.9.2'
+gem 'bcrypt'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
