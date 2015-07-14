@@ -5,7 +5,15 @@ class ApiController < ApplicationController
   private
 
   def authenticated?
-    authenticate_or_request_with_http_basic {|username, password| User.where( username: username, password_hash: password_hash(username, password)).present? }
+    authenticate_or_request_with_http_basic do |username, password|
+      user = User.authenticate(username, password)
+      if user.present?
+        @current_user = user
+        return true
+      else
+        return false
+      end
+    end
   end
 
   def password_hash(username, password)
