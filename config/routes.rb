@@ -4,6 +4,10 @@ Rails.application.routes.draw do
     resources :lists, only: [:show]
   end
 
+  resources :lists, only: [] do
+    resources :items, only: [:create, :update]
+  end
+
   resources :sessions, only: [:create]
 
   namespace :api, defaults: { format: :json } do

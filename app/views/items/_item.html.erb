@@ -1,1 +1,15 @@
-<h3><%= item.description %></h3>
+<li class="list-group-item">
+  <%= item.description %>
+  <span class="pull-right">
+    <% if item.complete? %>
+      Completed
+    <% else %>
+      <%= form_for [item.list, item], method: :put do |f| %>
+        <%= f.hidden_field :complete, value: true %>
+        <%= button_tag(type: 'submit', class: 'btn btn-success btn-xs') do %>
+          <span class="glyphicon glyphicon-ok" ></span>
+        <% end %>
+      <% end %> 
+    <% end %>
+  </span>
+</li>

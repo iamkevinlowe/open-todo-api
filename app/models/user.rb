@@ -1,12 +1,13 @@
 class User < ActiveRecord::Base
 
   attr_accessor :password
-  before_save :encrypt_password
 
   validates :username, presence: true, uniqueness: true
   validates :password, confirmation: true, presence: true, on: :create
 
   has_many :lists, dependent: :destroy
+  
+  before_save :encrypt_password
 
   def self.authenticate(username, password)
     user = User.where(username: username).first
