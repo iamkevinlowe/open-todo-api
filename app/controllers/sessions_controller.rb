@@ -9,8 +9,8 @@ class SessionsController < ApplicationController
       flash[:notice] = "Logged in!"
       redirect_to user
     else
-      flash[:error] = "Invalid username or password"
-      render "new"
+      flash[:error] = "Invalid username or password."
+      render :new
     end
   end
 
